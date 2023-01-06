@@ -1,0 +1,29 @@
+\chapter{What is your analytics doing}
+
+In accordance with what was discussed in chapter \ref{chapter:Positioning your Analytic in front of existing solution}, we will advance the ongoing project by making it more financially viable while ensuring that it continues to operate effectively and dependably. However, our objective is to create a hardware system that is based on accelerometers. Four accelerometer sensors are attached to each shoe (both the left and the right) at the heel and the proximal region of the big toe. These sensors are also aligned to the mediolateral axis so that they may measure rotation in the sagittal plane. The hardware, as mentioned earlier, will be able to extract the four essential events of walking that occur in sequential order in the time format, which are \ac{hs}, \ac{ts}, \ac{ho}, and \ac{to}, They will then be taken into account to diagnose and differentiate gait patterns. To this end, we'll present an explanation of our analytics' actions in a straightforward, two-part format:
+
+\section{Diagnosis of gait patterns}
+The recognition of human motion is the primary goal of the Diagnosis for gait pattern application, which makes use of the data provided by the accelerometer that is onboard with the Arduino Potenta H7 IMU. The step of diagnosing gait patterns can be broken down into two parts once we have collected the necessary data from the various sensors: the first part is called Data-Preparation, and the second part is called Gait Cycle Extraction.
+
+\subsubsection{Data-Preparation}
+
+The accelerometer readings include acceleration signals along all three axes as well as timing data. Nevertheless, the occurrence times of HS, TS, HO, and TO are plotted along the z-axis. Some unwanted information, like the gravitational component of vertical acceleration impulses, has yet to be processed and removed. Afterwards, the system records the elapsed time when the person's feet hit the ground. These intervals are linked to the heel and toe accelerations and are referred to as the "heel flat phase" and the "toe flat phase" in this work, , which will be discussed in greater detail in subsection \ref{subsection:Selection of Specific gait pattern}.
+
+\subsubsection{Gait Cycle Extraction}
+Following the completion of the data preparation, we were able to acquire the time recorded data, which can be categorized as the "heel flat phase" and the "toe flat phase." Because of this, we are able to determine the gait cycle based on these data. In addition to this, binary functions that represent the heel and toe are produced at this time scale. Consequently, the methodology that we have proposed makes use of the local information that is associated with the flat phase boundaries in order to extract the four gait events that are of interest from the time intervals in which the accelerometer moves by employing the Butterworth filter, it will be discussed in greater detail in subsection \ref{subsection:Data Preparation}.
+
+\subsection{Differentiate of gait pattern}
+
+Differentiating the gait pattern is the next step after diagnosing the pattern, along with the data preparation and cycle extraction that came before it. Nevertheless, this analytic element seeks to provide the prediction of injury modelling. In order to offer the prediction, there are three primary processes in this analysis that need to be explained: Recurrent Neural Networks (RNN) initialization, Feature Extraction, and Predictive injury modelling. All of them will be discussed further below.
+
+\subsubsection{Recurrent Neural Networks (RNN) Initialization}
+
+RNNs are helpful for processing sequential data like natural language or time series. RNNs see patterns in sequential data well. Our gait parameters are time-based so that we can feed them into a recurrent neural network (RNN). We can examine gait trends and relationships over time. During pre-processing, data is segmented into more manageable portions. The RNN would then change its hidden internal state based on the current input and its previous state at each time step.
+
+\subsubsection{Feature extraction}
+
+In the context of modelling for predicting injuries, "feature extraction" refers to locating and extracting pertinent and important features from a dataset of gait patterns. The gait parameters (HS, TS, HO, and TO) are a group of the characteristics that shall be classified in this category. The purpose of feature extraction is to identify the most relevant and important features within a dataset to be used as inputs to a machine-learning model. Once the most relevant and important features have been identified, the feature extraction process is complete, it shall be be discussed further in subsection \ref{section:Data Transformation}.
+
+\subsubsection{Predictive of injury modelling}
+
+An injury prediction model can be built using a machine learning model, such as a neural network, once the pertinent and important features have been identified and extracted from a person's gait. Gait patterns and injury outcomes are used to train a machine learning model. By precisely forecasting the probability of an injury, the system will be able to inform clinical decision-making and identify individuals who may be at an elevated risk of damage.

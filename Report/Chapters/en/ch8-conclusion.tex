@@ -1,0 +1,15 @@
+\chapter{Conclusion and Outlook}
+
+There are several ways to implement the gait parameter using sensors. Most consume sensors such as a gyroscope, accelerometer, pressure sensor pad, etc. Moreover, the research participant shall also need to attach the mentioned sensor all over the body, which can reduce the movement ability. Consequently, this can affect the quality of collected data, which can significantly affect the further analysis stage. Our approach aims to be more relaxed with the patient and use fewer resources, not affecting the outcome of the data.
+
+\bigskip
+
+We introduced the gait pattern analysis, consuming less investment in sensor usage but coming with the high ability of gait analysis function. As we launched the system that required only four Arduino Portenta H7, the research participant will no longer face the problem of unwieldiness. On the other hand, this can benefit our analysis, as we will be able to collect more precise data.
+
+\bigskip
+
+On the other hand, we need to execute the analysis physically. Therefore, we needed help accessing the actual world data leading us to face several obstacles, including defining the optimal amount of data for the neural network. Regarding the subsection \ref{subsubsection: Number of given step}, in order to be able to define the number of steps, we may require experimenting with different data volumes. Consequently, some neural network-related parameters could not be assigned because of this, making it also difficult to verify which setup will fit into the Arduino Portenta H7.
+
+\bigskip
+
+In conclusion, an additional neural network for fall detection that could be developed, trained, and incorporated into the Arduino devices in order to halt data collection and the treadmill in the event that a participant is about to fall would be an exciting prospect for the long-term development of our project.
